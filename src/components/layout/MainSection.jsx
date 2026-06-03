@@ -31,7 +31,13 @@ const sleep = (ms) =>
         setTimeout(resolve, ms)
     );
 
-function MainSection() {
+function MainSection({ algorithm,
+    setAlgorithm,
+    currentLine,
+    setCurrentLine,
+    currentEvent,
+    setCurrentEvent
+}) {
     const [array, setArray] = useState(() => generateRandomArray())
     const [input, setInput] = useState('')
 
@@ -43,17 +49,17 @@ function MainSection() {
 
     const [pointerJ, setPointerJ] = useState(null);
 
-    const [currentEvent, setCurrentEvent] = useState(null);
+    // const [currentEvent, setCurrentEvent] = useState(null);
     const [running, setRunning] = useState(false);
     const runningRef = useRef(false);
     const [origArray, setOrigArray] = useState(null);
     const [speed, setSpeed] = useState("normal");
 
-    const [algorithm, setAlgorithm] =
-        useState("bubble");
+    // const [algorithm, setAlgorithm] =
+    //     useState("bubble");
 
-    const [currentLine, setCurrentLine] =
-        useState(null);
+    // const [currentLine, setCurrentLine] =
+    //     useState(null);
 
     const getDelay = () => {
 

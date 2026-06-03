@@ -16,7 +16,8 @@ export function insertionSortSteps(arr) {
 
             events.push({
                 type: "compare",
-                indices: [j - 1, j]
+                indices: [j - 1, j],
+                line: 8
             });
 
             [array[j - 1], array[j]] =
@@ -24,7 +25,8 @@ export function insertionSortSteps(arr) {
 
             events.push({
                 type: "swap",
-                indices: [j - 1, j]
+                indices: [j - 1, j],
+                line: 10
             });
 
             j--;

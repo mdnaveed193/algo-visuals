@@ -1,139 +1,120 @@
-// export const codeSnippets = {
-//   bubble: [
-//     "for(i=0;i<n-1;i++){",
-//     "  for(j=0;j<n-i-1;j++){",
-//     "    if(arr[j] > arr[j+1]){",
-//     "       swap(arr[j],arr[j+1]);",
-//     "    }",
-//     "  }",
-//     "}"
-//   ],
-
-//   selection: [
-//     "for(i=0;i<n-1;i++){",
-//     "   min=i;",
-//     "   for(j=i+1;j<n;j++){",
-//     "      if(arr[j] < arr[min])",
-//     "          min=j;",
-//     "   }",
-//     "   swap(arr[i],arr[min]);",
-//     "}"
-//   ],
-
-//   insertion: [
-//     "for(i=1;i<n;i++){",
-//     "   key=arr[i];",
-//     "   j=i-1;",
-//     "   while(j>=0 && arr[j]>key){",
-//     "      arr[j+1]=arr[j];",
-//     "      j--;",
-//     "   }",
-//     "   arr[j+1]=key;",
-//     "}"
-//   ]
-// };
-
 export const codeSnippets = {
 
-    bubble: {
+    java: {
 
-        java: [
-            "for(int i=0;i<n-1;i++){",
-            "    for(int j=0;j<n-i-1;j++){",
-            "        if(arr[j] > arr[j+1]){",
-            "            swap(arr,j,j+1);",
-            "        }",
-            "    }",
-            "}"
+        bubble: [
+            "public void bubbleSort(int[] arr) {",          //1
+            "    int n = arr.length;",                      //2
+            "",                                             //3
+            "    for(int i = 0; i < n - 1; i++) {",        //4
+            "        for(int j = 0; j < n - i - 1; j++) {",//5
+            "            if(arr[j] > arr[j + 1]) {",       //6
+            "                swap(arr, j, j + 1);",        //7
+            "            }",                               //8
+            "        }",                                   //9
+            "    }",                                       //10
+            "}",                                           //11
+            "",                                            //12
+            "private void swap(int[] arr, int i, int j) {",//13
+            "    int temp = arr[i];",                      //14
+            "    arr[i] = arr[j];",                        //15
+            "    arr[j] = temp;",                          //16
+            "}"                                            //17
         ],
 
-        cpp: [
-            "for(int i=0;i<n-1;i++){",
-            "    for(int j=0;j<n-i-1;j++){",
-            "        if(arr[j] > arr[j+1]){",
-            "            swap(arr[j],arr[j+1]);",
-            "        }",
-            "    }",
-            "}"
+        selection: [
+            "public void selectionSort(int[] arr) {",      //1
+            "    int n = arr.length;",                     //2
+            "",                                            //3
+            "    for(int i = 0; i < n - 1; i++) {",       //4
+            "        int minIdx = i;",                    //5
+            "",                                            //6
+            "        for(int j = i + 1; j < n; j++) {",  //7
+            "            if(arr[j] < arr[minIdx]) {",     //8
+            "                minIdx = j;",                //9
+            "            }",                              //10
+            "        }",                                  //11
+            "",                                            //12
+            "        swap(arr, i, minIdx);",              //13
+            "    }",                                      //14
+            "}",                                          //15
+            "",                                            //16
+            "private void swap(int[] arr, int i, int j) {",//17
+            "    int temp = arr[i];",                     //18
+            "    arr[i] = arr[j];",                       //19
+            "    arr[j] = temp;",                         //20
+            "}"                                           //21
         ],
 
-        python: [
-            "for i in range(n-1):",
-            "    for j in range(n-i-1):",
-            "        if arr[j] > arr[j+1]:",
-            "            arr[j],arr[j+1] = arr[j+1],arr[j]"
+        insertion: [
+            "public void insertionSort(int[] arr) {",     //1
+            "    int n = arr.length;",                    //2
+            "",                                            //3
+            "    for(int i = 1; i < n; i++) {",          //4
+            "        int key = arr[i];",                 //5
+            "        int j = i - 1;",                    //6
+            "",                                            //7
+            "        while(j >= 0 && arr[j] > key) {",   //8
+            "            arr[j + 1] = arr[j];",          //9
+            "            j--;",                          //10
+            "        }",                                 //11
+            "",                                            //12
+            "        arr[j + 1] = key;",                //13
+            "    }",                                     //14
+            "}"                                          //15
         ]
     },
 
-    selection: {
+    cpp: {
 
-        java: [
-            "for(int i=0;i<n-1;i++){",
-            "    int min=i;",
-            "    for(int j=i+1;j<n;j++){",
-            "        if(arr[j]<arr[min]){",
-            "            min=j;",
-            "        }",
-            "    }",
-            "    swap(arr,i,min);",
-            "}"
+        bubble: [
+            "void bubbleSort(vector<int>& arr) {",        //1
+            "    int n = arr.size();",                    //2
+            "",                                            //3
+            "    for(int i = 0; i < n - 1; i++) {",      //4
+            "        for(int j = 0; j < n - i - 1; j++) {",//5
+            "            if(arr[j] > arr[j + 1]) {",     //6
+            "                swap(arr[j], arr[j + 1]);", //7
+            "            }",                             //8
+            "        }",                                 //9
+            "    }",                                     //10
+            "}"                                          //11
         ],
 
-        cpp: [
-            "for(int i=0;i<n-1;i++){",
-            "    int min=i;",
-            "    for(int j=i+1;j<n;j++){",
-            "        if(arr[j]<arr[min])",
-            "            min=j;",
-            "    }",
-            "    swap(arr[i],arr[min]);",
-            "}"
+        selection: [
+            "void selectionSort(vector<int>& arr) {",    //1
+            "    int n = arr.size();",                   //2
+            "",                                            //3
+            "    for(int i = 0; i < n - 1; i++) {",     //4
+            "        int minIdx = i;",                  //5
+            "",                                            //6
+            "        for(int j = i + 1; j < n; j++) {",//7
+            "            if(arr[j] < arr[minIdx]) {",   //8
+            "                minIdx = j;",              //9
+            "            }",                            //10
+            "        }",                                //11
+            "",                                            //12
+            "        swap(arr[i], arr[minIdx]);",       //13
+            "    }",                                    //14
+            "}"                                         //15
         ],
 
-        python: [
-            "for i in range(n-1):",
-            "    min_idx=i",
-            "    for j in range(i+1,n):",
-            "        if arr[j]<arr[min_idx]:",
-            "            min_idx=j",
-            "    arr[i],arr[min_idx]=arr[min_idx],arr[i]"
-        ]
-    }
-,
-    insertion: {
-
-        java: [
-            "for(int i=1;i<n;i++){",
-            "    int key = arr[i];",
-            "    int j = i-1;",
-            "    while(j>=0 && arr[j]>key){",
-            "        arr[j+1]=arr[j];",
-            "        j--;",
-            "    }",
-            "    arr[j+1]=key;",
-            "}"
-        ],
-
-        cpp: [
-            "for(int i=1;i<n;i++){",
-            "    int key = arr[i];",
-            "    int j = i-1;",
-            "    while(j>=0 && arr[j]>key){",
-            "        arr[j+1]=arr[j];",
-            "        j--;",
-            "    }",
-            "    arr[j+1]=key;",
-            "}"
-        ],
-
-        python: [
-            "for i in range(1,n):",
-            "    key = arr[i]",
-            "    j = i-1",
-            "    while j>=0 and arr[j] > key:",
-            "        arr[j+1] = arr[j]",
-            "        j -= 1",
-            "    arr[j+1] = key"
+        insertion: [
+            "void insertionSort(vector<int>& arr) {",   //1
+            "    int n = arr.size();",                  //2
+            "",                                            //3
+            "    for(int i = 1; i < n; i++) {",        //4
+            "        int key = arr[i];",               //5
+            "        int j = i - 1;",                  //6
+            "",                                            //7
+            "        while(j >= 0 && arr[j] > key) {",//8
+            "            arr[j + 1] = arr[j];",       //9
+            "            j--;",                        //10
+            "        }",                               //11
+            "",                                            //12
+            "        arr[j + 1] = key;",             //13
+            "    }",                                   //14
+            "}"                                        //15
         ]
     }
 };

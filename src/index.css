@@ -114,3 +114,6 @@ code {
   padding: 0;
   box-sizing: border-box;
  }
+.highlightLine {
+    background: rgba(255,255,0,0.25);
+}
