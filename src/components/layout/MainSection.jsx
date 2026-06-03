@@ -48,6 +48,7 @@ function MainSection({ algorithm,
     const [pointerI, setPointerI] = useState(null);
 
     const [pointerJ, setPointerJ] = useState(null);
+    const [pointerMin, setPointerMin] = useState(null);
 
     // const [currentEvent, setCurrentEvent] = useState(null);
     const [running, setRunning] = useState(false);
@@ -88,6 +89,8 @@ function MainSection({ algorithm,
 
         setPointerJ(null);
 
+        setPointerMin(null);
+
 
         setCurrentEvent(null);
         setOrigArray(a.map(it => ({ ...it })));
@@ -112,6 +115,7 @@ function MainSection({ algorithm,
         setSortedIndices([]);
         setPointerI(null);
         setPointerJ(null);
+        setPointerMin(null);
         setInput("");
         setOrigArray(arrayObjects.map(it => ({ ...it })));
     }
@@ -129,6 +133,7 @@ function MainSection({ algorithm,
         setSortedIndices([]);
         setPointerI(null);
         setPointerJ(null);
+        setPointerMin(null);
         setCurrentEvent(null);
     }
 
@@ -165,6 +170,10 @@ function MainSection({ algorithm,
         setOrigArray(array.map(it => ({ ...it })));
         let currentArray = [...array];
 
+        if (algorithm !== "selection") {
+            setPointerMin(null);
+        }
+
         // mark running refs
         runningRef.current = true;
         setRunning(true);
@@ -178,13 +187,30 @@ function MainSection({ algorithm,
             } else {
                 setCurrentLine(null);
             }
+            if (event.type === "setPointers") {
+
+    setPointerI(event.iIndex);
+
+    setPointerMin(event.minIndex);
+
+    setPointerJ(event.jIndex);
+
+    await sleep(getDelay() / 2);
+}
 
             if (event.type === "compare") {
 
-                const [left, right] = event.indices;
+                const [left, right] = (event.indices || []);
 
-                setPointerI(left);
-                setPointerJ(right);
+                if (event.iIndex !== undefined || event.jIndex !== undefined || event.minIndex !== undefined) {
+                    setPointerI(event.iIndex ?? null);
+                    setPointerMin(event.minIndex ?? null);
+                    setPointerJ(event.jIndex ?? null);
+                } else {
+                    setPointerI(left ?? null);
+                    setPointerMin(null);
+                    setPointerJ(right ?? null);
+                }
 
                 setActiveIndices(event.indices);
 
@@ -208,6 +234,16 @@ function MainSection({ algorithm,
 
                 await sleep(getDelay());
             }
+            else if (event.type === "minUpdate") {
+
+    setPointerI(event.iIndex);
+
+    setPointerMin(event.minIndex);
+
+    setPointerJ(event.jIndex);
+
+    await sleep(getDelay() / 2);
+}
 
             else if (event.type === "minUpdate" || event.type === "insertion" || event.type === "keySelection") {
                 await sleep(getDelay() / 2);
@@ -232,6 +268,7 @@ function MainSection({ algorithm,
         setRunning(false);
         setPointerI(null);
         setPointerJ(null);
+        setPointerMin(null);
     };
 
     return (
@@ -266,6 +303,8 @@ function MainSection({ algorithm,
                     sortedIndices={sortedIndices}
                     pointerI={pointerI}
                     pointerJ={pointerJ}
+                    pointerMin={pointerMin}
+                    algorithm={algorithm}
 
                 />
 

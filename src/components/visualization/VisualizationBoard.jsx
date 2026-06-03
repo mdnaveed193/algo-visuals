@@ -11,6 +11,7 @@ function VisualizationBoard({
     comparisons,
     swaps,
     algorithm,
+    pointerMin
 }) {
 
     return (
@@ -53,6 +54,14 @@ function VisualizationBoard({
                                 ↓ j
                             </Typography>
                         )}
+                        {algorithm === 'selection' && pointerMin === index && (
+                            <Typography
+                                color="success.main"
+                                fontWeight={700}
+                            >
+                                ↓ min
+                            </Typography>)
+                        }
                     </Box>
 
                 ))}

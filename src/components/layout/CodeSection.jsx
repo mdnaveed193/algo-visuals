@@ -87,6 +87,8 @@ useEffect(() => {
                 />
             </div>
 
+            {/* (reverted) no sliding info card */}
+
         </Paper>
     )
 }
