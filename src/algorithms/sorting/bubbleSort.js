@@ -13,7 +13,7 @@ export function bubbleSortSteps(input) {
             events.push({
                 type: "compare",
                 indices: [j, j + 1],
-                line: 5
+                line: 6
             })
 
             if (arr[j].value > arr[j + 1].value) {

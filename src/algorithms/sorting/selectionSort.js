@@ -14,7 +14,8 @@ export function selectionSortSteps(arr) {
 
             events.push({
                 type: "compare",
-                indices: [min, j]
+                indices: [min, j],
+                line:8
             });
 
             if (array[j].value < array[min].value) {
@@ -29,7 +30,8 @@ export function selectionSortSteps(arr) {
 
             events.push({
                 type: "swap",
-                indices: [i, min]
+                indices: [i, min],
+                line:16
             });
         }
 

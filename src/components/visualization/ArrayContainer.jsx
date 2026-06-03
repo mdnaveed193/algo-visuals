@@ -1,5 +1,5 @@
 
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { AnimatePresence, LayoutGroup } from "framer-motion";
 import ArrayElement from "./ArrayElement";
 
@@ -20,20 +20,26 @@ function ArrayContainer({
 			<LayoutGroup>
 
 				{items.map((item, index) => (
-
-					<ArrayElement
+					<Box
 						key={item.id}
-						value={item.value}
+						sx={{
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							gap: 0.5,
+							width: 64,
+						}}
+						>
+							<ArrayElement
+								value={item.value}
+								isComparing={activeIndices.includes(index)}
+								isSorted={sortedIndices.includes(index)}
+							/>
 
-						isComparing={
-							activeIndices.includes(index)
-						}
-
-						isSorted={
-							sortedIndices.includes(index)
-						}
-					/>
-
+							<Typography sx={{ fontSize: 12, mt: 0.5, opacity: 0.9 }}>
+								{index}
+							</Typography>
+						</Box>
 				))}
 
 			</LayoutGroup>
