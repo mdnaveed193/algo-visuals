@@ -8,7 +8,8 @@ export const codeSnippets = {
             "",                                             //3
             "    for(int i = 0; i < n - 1; i++) {",        //4
             "        for(int j = 0; j < n - i - 1; j++) {",//5
-            "            if(arr[j] > arr[j + 1]) {",       //6
+            "            if(arr[j] > arr[j + 1]) {", 
+            "           //swap elements at jth and j+1th index",      //6
             "                swap(arr, j, j + 1);",        //7
             "            }",                               //8
             "        }",                                   //9
@@ -34,7 +35,7 @@ export const codeSnippets = {
             "                minIdx = j;",                //9
             "            }",                              //10
             "        }",                                  //11
-            "",                                            //12
+            "       //swap elements at ith idex and minIndx",                                            //12
             "        swap(arr, i, minIdx);",              //13
             "    }",                                      //14
             "}",                                          //15

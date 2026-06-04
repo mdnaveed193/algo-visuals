@@ -16,42 +16,43 @@ function CodeSection({ algorithm, language, setLanguage, currentLine, currentEve
     const monacoRef = useRef(null);
 
     const handleEditorMount = (editor, monaco) => {
-    editorRef.current = editor;
-    monacoRef.current = monaco;
-};
-const decorationRef = useRef([]); // to highlight current line
+        editorRef.current = editor;
+        monacoRef.current = monaco;
+    };
+    const decorationRef = useRef([]); // to highlight current line
 
-useEffect(() => {
+    useEffect(() => {
 
-    if (
-        !editorRef.current ||
-        !monacoRef.current ||
-        !currentLine
-    ) {
-        return;
-    }
+        
+        if (
+            !editorRef.current ||
+            !monacoRef.current ||
+            !currentLine
+        ) {
+            return;
+        }
 
-    decorationRef.current =
-        editorRef.current.deltaDecorations(
-            decorationRef.current,
-            [
-                {
-                    range:
-                        new monacoRef.current.Range(
-                            currentLine,
-                            1,
-                            currentLine,
-                            1
-                        ),
-                    options: {
-                        isWholeLine: true,
-                        className: "highlightLine"
+        decorationRef.current =
+            editorRef.current.deltaDecorations(
+                decorationRef.current,
+                [
+                    {
+                        range:
+                            new monacoRef.current.Range(
+                                currentLine,
+                                1,
+                                currentLine,
+                                1
+                            ),
+                        options: {
+                            isWholeLine: true,
+                            className: "highlightLine"
+                        }
                     }
-                }
-            ]
-        );
+                ]
+            );
 
-}, [currentLine]);
+    }, [currentLine]);
 
     return (
         <Paper sx={{
@@ -67,7 +68,7 @@ useEffect(() => {
 
             <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column' }}>
                 <Editor
-                onMount={handleEditorMount}
+                    onMount={handleEditorMount}
                     height="400px"
                     theme="vs-dark"
                     language={

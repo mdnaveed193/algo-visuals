@@ -189,14 +189,14 @@ function MainSection({ algorithm,
             }
             if (event.type === "setPointers") {
 
-    setPointerI(event.iIndex);
+                setPointerI(event.iIndex);
 
-    setPointerMin(event.minIndex);
+                setPointerMin(event.minIndex);
 
-    setPointerJ(event.jIndex);
+                setPointerJ(event.jIndex);
 
-    await sleep(getDelay() / 2);
-}
+                await sleep(getDelay() / 2);
+            }
 
             if (event.type === "compare") {
 
@@ -236,14 +236,14 @@ function MainSection({ algorithm,
             }
             else if (event.type === "minUpdate") {
 
-    setPointerI(event.iIndex);
+                setPointerI(event.iIndex);
 
-    setPointerMin(event.minIndex);
+                setPointerMin(event.minIndex);
 
-    setPointerJ(event.jIndex);
+                setPointerJ(event.jIndex);
 
-    await sleep(getDelay() / 2);
-}
+                await sleep(getDelay() / 2);
+            }
 
             else if (event.type === "minUpdate" || event.type === "insertion" || event.type === "keySelection") {
                 await sleep(getDelay() / 2);
