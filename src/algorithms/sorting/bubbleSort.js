@@ -21,7 +21,7 @@ export function bubbleSortSteps(input) {
                 events.push({
                     type: "swap",
                     indices: [j, j + 1],
-                    line: 7
+                    line: 8
                 })
 
                 ;[arr[j], arr[j + 1]]
