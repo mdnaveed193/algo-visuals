@@ -10,19 +10,55 @@ export function bubbleSortSteps(input) {
 
         for (let j = 0; j < n - i - 1; j++) {
 
+            // events.push({
+            //     type: "compare",
+            //     indices: [j, j + 1],
+            //     line: 6
+            // })
+            // events.push({
+            //     type: "compare",
+            //     indices: [j, j + 1],
+
+            //     iIndex: i,
+            //     jIndex: j,
+
+            //     line: 6
+            // });
             events.push({
                 type: "compare",
                 indices: [j, j + 1],
+
+                jIndex: j,
+                nextIndex: j + 1,
+
                 line: 6
-            })
+            });
 
             if (arr[j].value > arr[j + 1].value) {
 
+                // events.push({
+                //     type: "swap",
+                //     indices: [j, j + 1],
+                //     line: 8
+                // })
+                // events.push({
+                //     type: "swap",
+                //     indices: [j, j + 1],
+
+                //     iIndex: i,
+                //     jIndex: j,
+
+                //     line: 8
+                // });
                 events.push({
-                    type: "swap",
-                    indices: [j, j + 1],
-                    line: 8
-                })
+    type: "swap",
+    indices: [j, j + 1],
+
+    jIndex: j,
+    nextIndex: j + 1,
+
+    line: 8
+})
 
                 ;[arr[j], arr[j + 1]]
                     =

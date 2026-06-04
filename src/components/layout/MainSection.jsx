@@ -55,6 +55,7 @@ function MainSection({ algorithm,
     const runningRef = useRef(false);
     const [origArray, setOrigArray] = useState(null);
     const [speed, setSpeed] = useState("normal");
+    const [pointerNext, setPointerNext] = useState(null);
 
     // const [algorithm, setAlgorithm] =
     //     useState("bubble");
@@ -90,6 +91,7 @@ function MainSection({ algorithm,
         setPointerJ(null);
 
         setPointerMin(null);
+        setPointerNext(null);
 
 
         setCurrentEvent(null);
@@ -116,6 +118,7 @@ function MainSection({ algorithm,
         setPointerI(null);
         setPointerJ(null);
         setPointerMin(null);
+        setPointerNext(null);
         setInput("");
         setOrigArray(arrayObjects.map(it => ({ ...it })));
     }
@@ -134,6 +137,7 @@ function MainSection({ algorithm,
         setPointerI(null);
         setPointerJ(null);
         setPointerMin(null);
+        setPointerNext(null);
         setCurrentEvent(null);
     }
 
@@ -198,18 +202,62 @@ function MainSection({ algorithm,
                 await sleep(getDelay() / 2);
             }
 
+            // if (event.type === "compare") {
+
+            //     const [left, right] = (event.indices || []);
+
+            //     if (event.iIndex !== undefined || event.jIndex !== undefined || event.minIndex !== undefined) {
+            //         setPointerI(event.iIndex ?? null);
+            //         setPointerMin(event.minIndex ?? null);
+            //         setPointerJ(event.jIndex ?? null);
+            //     } else {
+            //         setPointerI(left ?? null);
+            //         setPointerMin(null);
+            //         setPointerJ(right ?? null);
+            //     }
+
+            //     setActiveIndices(event.indices);
+
+            //     await sleep(getDelay());
+            // }
             if (event.type === "compare") {
 
-                const [left, right] = (event.indices || []);
+                if (algorithm === "bubble") {
 
-                if (event.iIndex !== undefined || event.jIndex !== undefined || event.minIndex !== undefined) {
-                    setPointerI(event.iIndex ?? null);
-                    setPointerMin(event.minIndex ?? null);
-                    setPointerJ(event.jIndex ?? null);
-                } else {
-                    setPointerI(left ?? null);
+                    setPointerI(null);
+
                     setPointerMin(null);
-                    setPointerJ(right ?? null);
+
+                    setPointerJ(event.jIndex);
+
+                    setPointerNext(event.nextIndex);
+
+                } else {
+
+                    const [left, right] = event.indices || [];
+
+                    if (
+                        event.iIndex !== undefined ||
+                        event.jIndex !== undefined ||
+                        event.minIndex !== undefined
+                    ) {
+
+                        setPointerI(event.iIndex ?? null);
+
+                        setPointerMin(event.minIndex ?? null);
+
+                        setPointerJ(event.jIndex ?? null);
+
+                    } else {
+
+                        setPointerI(left ?? null);
+
+                        setPointerMin(null);
+
+                        setPointerJ(right ?? null);
+                    }
+
+                    setPointerNext(null);
                 }
 
                 setActiveIndices(event.indices);
@@ -269,6 +317,7 @@ function MainSection({ algorithm,
         setPointerI(null);
         setPointerJ(null);
         setPointerMin(null);
+        setPointerNext(null);
     };
 
     return (
@@ -305,6 +354,7 @@ function MainSection({ algorithm,
                     pointerJ={pointerJ}
                     pointerMin={pointerMin}
                     algorithm={algorithm}
+                    pointerNext={pointerNext}
 
                 />
 
