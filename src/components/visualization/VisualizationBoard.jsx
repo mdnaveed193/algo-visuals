@@ -11,7 +11,8 @@ function VisualizationBoard({
     comparisons,
     swaps,
     algorithm,
-    pointerMin
+    pointerMin,
+    pointerNext
 }) {
 
     return (
@@ -51,6 +52,14 @@ function VisualizationBoard({
                                     ↓ i
                                 </Typography>
                             )}
+                            {pointerNext === index && (
+    <Typography
+        color="info.main"
+        fontWeight={700}
+    >
+        ↓ j+1
+    </Typography>
+)}
 
                             {pointerJ === index && (
                                 <Typography
